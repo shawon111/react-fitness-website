@@ -16,8 +16,8 @@ const HorizontalScrollbar = ({data, bodyPart, setBodyPart}) => {
         modules={[A11y, Autoplay]}
                 spaceBetween={0}
                 slidesPerView={4}
-                speed={1000}
-                autoplay={false}
+                speed={1500}
+                autoplay={true}
                 breakpoints={{ 
                     1024: {
                       slidesPerView: 4,
