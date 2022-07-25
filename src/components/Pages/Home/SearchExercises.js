@@ -75,7 +75,7 @@ const SearchExercises = ({bodyPart, setBodyPart, setExercises}) => {
             }}
             className="bodyparts-slider"
             >
-                <HorizontalScrollbar data={bodyParts} bodyPart={bodyPart} setBodyPart={setBodyPart} />
+                <HorizontalScrollbar data={bodyParts} bodyPart={bodyPart} setBodyPart={setBodyPart} isBodyPart={true} />
             </Box>
         </Stack>
     );

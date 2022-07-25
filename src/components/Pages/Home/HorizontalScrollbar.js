@@ -8,38 +8,45 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import ExerciseCard from './ExerciseCard';
 
-const HorizontalScrollbar = ({data, bodyPart, setBodyPart}) => {
-    return (
-        <Box>
-        <Swiper
+const HorizontalScrollbar = ({ data, bodyPart, setBodyPart, isBodyPart }) => {
+  return (
+    <Box>
+      <Swiper
         modules={[A11y, Autoplay]}
-                spaceBetween={0}
-                slidesPerView={4}
-                speed={1500}
-                autoplay={true}
-                breakpoints={{ 
-                    1024: {
-                      slidesPerView: 4,
-                    },
-                    576: {
-                      slidesPerView: 2,
-                    },
-                    320: {
-                      slidesPerView: 1,
-                    }
-                  }}
-        >
+        spaceBetween={0}
+        slidesPerView={4}
+        speed={1500}
+        autoplay={true}
+        breakpoints={{
+          1024: {
+            slidesPerView: 4,
+          },
+          576: {
+            slidesPerView: 2,
+          },
+          320: {
+            slidesPerView: 1,
+          }
+        }}
+      >
+        {
+          data.map(item => <SwiperSlide
+            key={item.id || item}
+          >
             {
-                data.map(item=> <SwiperSlide
-                    key={item.id || item}
-                ><Box>
-                    <BodyPart item={item} bodyPart={bodyPart} setBodyPart={setBodyPart} />
-                </Box></SwiperSlide>)
+              isBodyPart ? <Box> <BodyPart item={item} bodyPart={bodyPart} setBodyPart={setBodyPart} /> 
+              </Box> :
+                <Box>
+                   <ExerciseCard exercise={item} />
+                </Box>
             }
-        </Swiper>
-        </Box>
-    );
+          </SwiperSlide>)
+        }
+      </Swiper>
+    </Box>
+  );
 };
 
 export default HorizontalScrollbar;
