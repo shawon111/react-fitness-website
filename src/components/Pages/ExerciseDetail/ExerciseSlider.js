@@ -1,26 +1,21 @@
-import { Box } from '@mui/system';
+import { Box } from '@mui/material';
 import React from 'react';
-import BodyPart from './BodyPart';
 import { A11y, Autoplay } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/bundle'
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import ExerciseCard from '../Home/ExerciseCard';
 
-const HorizontalScrollbar = ({ data, bodyPart, setBodyPart, isBodyPart }) => {
-  return (
-    <Box>
+const ExerciseSlider = ({data}) => {
+    return (
+        <Box>
       <Swiper
         modules={[A11y, Autoplay]}
         spaceBetween={0}
-        slidesPerView={4}
-        speed={1500}
+        slidesPerView={3}
+        speed={3000}
         autoplay={true}
         breakpoints={{
           1024: {
-            slidesPerView: 4,
+            slidesPerView: 3,
           },
           576: {
             slidesPerView: 2,
@@ -34,13 +29,14 @@ const HorizontalScrollbar = ({ data, bodyPart, setBodyPart, isBodyPart }) => {
           data.map(item => <SwiperSlide
             key={item.id || item}
           >
-            <Box> <BodyPart item={item} bodyPart={bodyPart} setBodyPart={setBodyPart} /> 
-              </Box> 
+                <Box>
+                   <ExerciseCard exercise={item} />
+                </Box>
           </SwiperSlide>)
         }
       </Swiper>
     </Box>
-  );
+    );
 };
 
-export default HorizontalScrollbar;
+export default ExerciseSlider;
